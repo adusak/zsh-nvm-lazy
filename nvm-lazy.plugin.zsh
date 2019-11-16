@@ -11,7 +11,8 @@ do
         do
             unset -f $FUNCTION
         done
-        zgen oh-my-zsh plugins/nvm
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
         $NODE_BINARY $@
     }
 done
