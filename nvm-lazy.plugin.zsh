@@ -1,9 +1,9 @@
 # Lazy load nvm, with multiple entrypoints
 # Add more entrypoints by defining the ZSH_LAZY_NVM_BINARIES array
 add_lazy() {
-    function_name=$1
+    local function_name=$1
     shift 1
-    binaries=("$@")
+    local binaries=("$@")
     for binary in $binaries
     do
         echo "defining ${binary}"
