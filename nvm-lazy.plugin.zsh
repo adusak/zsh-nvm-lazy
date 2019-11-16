@@ -15,7 +15,7 @@ add_lazy() {
                 unset -f $FUNCTION
             done
             echo "Invoking function ${function_name}"
-            $function_name()
+            $function_name
             echo "Invoking binary ${0}"
             $0 $@
         }
