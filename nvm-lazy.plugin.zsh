@@ -6,17 +6,12 @@ add_lazy() {
     binaries=("$@")
     for binary in $binaries
     do
-        echo "defining ${binary}"
         $binary() {
-            echo "Invoked prefunction for ${0}"
             for FUNCTION in $binaries
             do
-                echo "Removing prefunction for ${FUNCTION}"
                 unset -f $FUNCTION
             done
-            echo "Invoking function ${function_name}"
             $function_name
-            echo "Invoking binary ${0}"
             $0 $@
         }
     done
