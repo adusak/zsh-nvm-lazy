@@ -3,17 +3,21 @@
 add_lazy() {
     function_name=$1
     shift 1
-    rest_of_args=("$@")
-    for binary in "${rest_of_args}"
+    binaries=("$@")
+    for binary in $binaries
     do
         echo "defining ${binary}"
         $binary() {
-            for FUNCTION in $rest_of_args
+            echo "Invoked prefunction for ${0}"
+            for FUNCTION in $binaries
             do
+                echo "Removing prefunction for ${FUNCTION}"
                 unset -f $FUNCTION
             done
+            echo "Invoking function ${function_name}"
             $function_name()
-            $binary $@
+            echo "Invoking binary ${0}"
+            $0 $@
         }
     done
 }
